@@ -25,20 +25,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#myPage">Alireza</a>
+            <a class="navbar-brand" href="#myPage">Theater Messenger</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Home</a></li>
-                <li><a href="/invoices">Invoices</a></li>
+                <li><a href="/engineer">Sound Engineer</a></li>
+                <li><a href="/assistant">Sound Assistant</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="jumbotron text-center">
-    <h1>Dr. House Hospital</h1>
-    <p>We care about your health</p>
+    <h1>Theater Messenger</h1>
+    <p>We care about your sound</p>
+
     <div th:if="${param.logout}" class="alert alert-success fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Success!</strong> You have been logged out.
@@ -56,10 +57,8 @@
         <div class="form-group">
             <input type="password" class="form-control" name="password" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn btn-info">Login</button>
-        <div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
-        </div>
+        <button type="submit" class="btn btn-default">Login</button>
+
     </form>
 </div>
 

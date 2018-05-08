@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>Home Page</title>
+    <title>Sound Engineer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,13 +38,14 @@
 
 <div class="jumbotron text-center">
     <h1>Theater Messenger</h1>
-    <p>We care about your voice</p>
+    <p>We care about your sound</p>
     <p><br/></p>
-    <form class="form-inline" th:object="${newProject}" th:action="@{/createProject}" method="post">
-
-        <button type="submit" class="btn btn-default">Create New Project</button>
-
-
+    <form class="form-inline" th:object="${newProject}" th:action="@{/newproject}" method="post">
+        <button type="submit" class="btn btn-default">New Project</button>
+    </form>
+    <p></p>
+    <form class="form-inline" th:object="${showProjects}" th:action="@{/projects}" method="post">
+        <button type="submit" class="btn btn-default">Open an existing Project</button>
     </form>
 </div>
 

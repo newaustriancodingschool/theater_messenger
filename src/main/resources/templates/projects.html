@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>New Project Page</title>
+    <title>Projects Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,17 +40,28 @@
     <h1>Theater Messenger</h1>
     <p>We care about your sound</p>
     <p><br/></p>
-    <form class="form-inline" th:object="${newActor}" th:action="@{/}" method="post">
-        <div class="form-group">
-            <input type="text" class="form-control" id="actorName" th:field="*{actorName}" placeholder="Actor Name"
-                   required>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="micNumber" th:field="*{micNumber}" placeholder="Mic Number"
-                   required>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+
+    <p>Projects</p>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Begin date</th>
+                <th>End date</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="project: ${projects}"  class="text-left">
+                <td th:text="${project.name}">Name</td>
+                <td th:text="${project.begin}">01/05/2018</td>
+                <td th:text="${project.end}">02/09/2018</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

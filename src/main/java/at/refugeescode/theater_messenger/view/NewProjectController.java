@@ -5,5 +5,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/newproject")
-public class CreateNewProjectController {
+public class NewProjectController {
 }
