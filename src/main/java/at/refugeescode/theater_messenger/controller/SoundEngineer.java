@@ -1,6 +1,8 @@
 package at.refugeescode.theater_messenger.controller;
 
-import at.refugeescode.theater_messenger.logic.ProblemFactory;
+import at.refugeescode.theater_messenger.persistence.model.ProblemTypes;
+import at.refugeescode.theater_messenger.persistence.model.Actor;
+import at.refugeescode.theater_messenger.persistence.model.Project;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -8,21 +10,27 @@ import java.util.List;
 @Controller
 public class SoundEngineer {
 
-    // ToDO: SE should be able to create a new project
+    // ToDO: SE can create a new project
+    // ToDO: SE can edit an existing project
+    // ToDo: SE can delete a project
+    // ToDO: SE can send a message to SA
 
-    // ToDO: SE should be able to edit an existing project
+    private Project project;
+    private ProblemTypes problemTypes;
 
-    // ToDo: SE
-
-    private ProblemFactory problemFactory;
-
-    public SoundEngineer(ProblemFactory problemFactory) {
-        this.problemFactory = problemFactory;
+    public SoundEngineer(ProblemTypes problemTypes, Project project) {
+        this.problemTypes = problemTypes;
+        this.project = project;
     }
 
     public List<String> makeProblem() {
-        List<String> problem = problemFactory.createProblem();
+        List<String> problem = problemTypes.createProblem();
         //System.out.println(problem.get(0));
         return problem;
     }
+
+//    public Project createProject(String string, List<Actor> actors){
+//        project.setName();
+//    }
+
 }
