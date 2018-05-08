@@ -1,4 +1,4 @@
-package at.refugeescode.theater_messenger.logic;
+package at.refugeescode.theater_messenger.persistence.model;
 
 import org.springframework.stereotype.Service;
 
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-public class ProblemFactory {
+public class ProblemTypes {
 
     public List<String> createProblem() {
         return Stream.of("Batteries", "Cable", "Antenna", "Frequency", "Clean Mic", "Change Mic", "Change Tape")
