@@ -12,11 +12,6 @@ public class SoundEngineer {
     // ToDo: SE can delete a project
     // ToDO: SE can send a message to SA
 
-//    private ProblemParser problemParser;
-//
-//    public SoundEngineer(ProblemParser problemParser) {
-//        this.problemParser = problemParser;
-//    }
 
     private ProblemFactory problemFactory;
 
@@ -25,20 +20,11 @@ public class SoundEngineer {
     }
 
 
-    public List<String> makeProblem() {
-//        List<String> problem = problemParser.getProblem();
-//
-//        System.out.println(problem);
+//    public List<String> makeProblem() {
+//        List<String> problem = problemFactory.createProblem();
+//        System.out.println(problem.get(0));
 //        return problem;
 //    }
 
-        List<String> problem = problemFactory.createProblem();
-        System.out.println(problem.get(0));
-        return problem;
-    }
-
-//    public Project createProject(String string, List<Actor> actors){
-//        project.setName();
-//    }
 
 }

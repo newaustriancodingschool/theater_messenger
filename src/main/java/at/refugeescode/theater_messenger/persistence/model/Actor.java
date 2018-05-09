@@ -14,8 +14,6 @@ public class Actor {
     private String lastName;
     private String roleName;
     private Integer micNumber;
-    private Integer bagNumber;
-    private Integer outputGain;
 
     public Long getId() {
         return id;
@@ -57,19 +55,14 @@ public class Actor {
         this.micNumber = micNumber;
     }
 
-    public Integer getBagNumber() {
-        return bagNumber;
-    }
-
-    public void setBagNumber(Integer bagNumber) {
-        this.bagNumber = bagNumber;
-    }
-
-    public Integer getOutputGain() {
-        return outputGain;
-    }
-
-    public void setOutputGain(Integer outputGain) {
-        this.outputGain = outputGain;
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", roleName='" + roleName + '\'' +
+                ", micNumber=" + micNumber +
+                '}';
     }
 }
