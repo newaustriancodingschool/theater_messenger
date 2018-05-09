@@ -1,13 +1,11 @@
 package at.refugeescode.theater_messenger.controller;
 
-import at.refugeescode.theater_messenger.persistence.model.ProblemTypes;
-import at.refugeescode.theater_messenger.persistence.model.Actor;
-import at.refugeescode.theater_messenger.persistence.model.Project;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@Service
 public class SoundEngineer {
 
     // ToDO: SE can create a new project
@@ -15,19 +13,22 @@ public class SoundEngineer {
     // ToDo: SE can delete a project
     // ToDO: SE can send a message to SA
 
-    private Project project;
-    private ProblemTypes problemTypes;
+//    private Project project;
+//    private ProblemTypes problemTypes;
 
-    public SoundEngineer(ProblemTypes problemTypes, Project project) {
-        this.problemTypes = problemTypes;
-        this.project = project;
-    }
+//    public SoundEngineer(ProblemTypes problemTypes, Project project) {
+//        this.problemTypes = problemTypes;
+//        this.project = project;
+//    }
 
     public List<String> makeProblem() {
-        List<String> problem = problemTypes.createProblem();
-        //System.out.println(problem.get(0));
-        return problem;
+        return new ArrayList<>();
     }
+
+//        List<String> problem = problemTypes.createProblem();
+        //System.out.println(problem.get(0));
+//        return problem;
+//    }
 
 //    public Project createProject(String string, List<Actor> actors){
 //        project.setName();
