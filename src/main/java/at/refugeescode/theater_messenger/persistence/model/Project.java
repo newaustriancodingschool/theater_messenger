@@ -1,6 +1,7 @@
 package at.refugeescode.theater_messenger.persistence.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -10,6 +11,8 @@ public class Project {
     @GeneratedValue
     private Long id;
     private String name;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Actor> actors;
@@ -30,6 +33,22 @@ public class Project {
         this.name = name;
     }
 
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
     public List<Actor> getActors() {
         return actors;
     }
@@ -43,6 +62,8 @@ public class Project {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
                 ", actors=" + actors +
                 '}';
     }
