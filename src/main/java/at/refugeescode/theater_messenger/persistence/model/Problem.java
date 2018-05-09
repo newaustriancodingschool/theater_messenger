@@ -1,30 +1,32 @@
 package at.refugeescode.theater_messenger.persistence.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Problem {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
     private String name;
-    private Actor actor;
-
+    private Long actorId;
 
     public Problem() {
     }
 
-    public Problem(String name) {
+    public Problem(String name, Long actorId) {
         this.name = name;
+        this.actorId = actorId;
     }
 
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,12 +38,20 @@ public class Problem {
         this.name = name;
     }
 
+    public Long getActorId() {
+        return actorId;
+    }
+
+    public void setActorId(Long actorId) {
+        this.actorId = actorId;
+    }
 
     @Override
     public String toString() {
         return "Problem{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
+                ", actorId=" + actorId +
                 '}';
     }
 }

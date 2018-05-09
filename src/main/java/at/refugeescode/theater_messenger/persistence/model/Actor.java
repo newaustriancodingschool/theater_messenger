@@ -1,7 +1,15 @@
 package at.refugeescode.theater_messenger.persistence.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Actor {
 
+    @Id
+    @GeneratedValue
+    private Long id;
     private String firstName;
     private String lastName;
     private String roleName;
@@ -9,19 +17,13 @@ public class Actor {
     private Integer bagNumber;
     private Integer outputGain;
 
-
-    public Actor() {
+    public Long getId() {
+        return id;
     }
 
-    public Actor(String firstName, String lastName, String roleName, Integer micNumber, Integer bagNumber, Integer outputGain) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.roleName = roleName;
-        this.micNumber = micNumber;
-        this.bagNumber = bagNumber;
-        this.outputGain = outputGain;
+    public void setId(Long id) {
+        this.id = id;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -69,18 +71,5 @@ public class Actor {
 
     public void setOutputGain(Integer outputGain) {
         this.outputGain = outputGain;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Actor{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", roleName='" + roleName + '\'' +
-                ", micNumber=" + micNumber +
-                ", bagNumber=" + bagNumber +
-                ", outputGain=" + outputGain +
-                '}';
     }
 }
