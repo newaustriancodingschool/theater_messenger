@@ -18,14 +18,19 @@ public class EngineerController {
         this.soundEngineer = soundEngineer;
     }
 
-    @ModelAttribute("message")
-    List<String> problems() {
+    @ModelAttribute("problems")
+    List<String> showProblems() {
         return soundEngineer.makeProblem();
     }
 
     @GetMapping
-    String page() {
-        return "engineer";
+    List<String> problem() {
+        return soundEngineer.makeProblem();
     }
+
+//    @GetMapping
+//    String page() {
+//        return "engineer";
+//    }
 
 }

@@ -1,32 +1,24 @@
 package at.refugeescode.theater_messenger.persistence.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import javax.persistence.*;
 import java.util.List;
 
-@Document
+@Entity
 public class Project {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
     private String name;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Actor> actors;
 
-
-    public Project() {
-    }
-
-    public Project(String name, List<Actor> actors) {
-        this.name = name;
-        this.actors = actors;
-    }
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -46,11 +38,10 @@ public class Project {
         this.actors = actors;
     }
 
-
     @Override
     public String toString() {
         return "Project{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", actors=" + actors +
                 '}';
