@@ -4,6 +4,8 @@ import at.refugeescode.theater_messenger.persistence.model.Actor;
 import at.refugeescode.theater_messenger.persistence.repository.ActorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ActorController {
 
@@ -15,5 +17,13 @@ public class ActorController {
 
     public void addNewActor(Actor actor) {
         actorRepository.save(actor);
+    }
+
+    public List<Actor> showAllActors() {
+        return actorRepository.findAll();
+    }
+
+    public void removeActor(Long id) {
+        actorRepository.deleteById(id);
     }
 }
