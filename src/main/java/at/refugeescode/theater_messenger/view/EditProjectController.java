@@ -40,17 +40,17 @@ public class EditProjectController {
         return "redirect:/editproject";
     }
 
-    @GetMapping("{id}")
-    String deleteActor(@PathVariable Long id) {
-        actorController.removeActor(id);
-        return "redirect:/editproject";
-    }
+//    @GetMapping("{id}")
+//    String deleteActor(@PathVariable Long id) {
+//        actorController.removeActor(id);
+//        return "redirect:/editproject";
+//    }
 
-    @GetMapping("{id}")
-    String deleteProject(@PathVariable Long id) {
-        projectController.removeProject(id);
-        return "redirect:/editproject";
-    }
+//    @GetMapping("{id}")
+//    String deleteProject(@PathVariable Long id) {
+//        projectController.removeProject(id);
+//        return "redirect:/editproject";
+//    }
 
     @GetMapping
     String page() {
