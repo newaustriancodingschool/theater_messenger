@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service;
 public class ProjectController {
 
     private ProjectRepository projectRepository;
-    private Project project;
 
-    public ProjectController(ProjectRepository projectRepository, Project project) {
+    public ProjectController(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
-        this.project = project;
     }
 
     public void addNewProject(Project project) {
