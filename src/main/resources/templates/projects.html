@@ -31,6 +31,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/engineer">Sound Engineer</a></li>
                 <li><a href="/assistant">Sound Assistant</a></li>
+                <li><a href="/projects">Projects</a></li>
             </ul>
         </div>
     </div>
@@ -49,6 +50,7 @@
                 <th>Project Name</th>
                 <th>Start date</th>
                 <th>End date</th>
+                <th></th>
 
             </tr>
             </thead>
@@ -57,6 +59,8 @@
                 <td th:text="${project.name}">Name</td>
                 <td th:text="${project.startDate}">01/05/2018</td>
                 <td th:text="${project.endDate}">02/09/2018</td>
+                <td href="/newactor" class="btn btn-default">Edit Project</a></td>
+
             </tr>
             </tbody>
         </table>
