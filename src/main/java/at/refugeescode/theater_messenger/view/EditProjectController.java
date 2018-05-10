@@ -27,11 +27,6 @@ public class EditProjectController {
         return new Actor();
     }
 
-    @ModelAttribute("projects")
-    List<Project> showProjects() {
-        return projectController.showAllProjects();
-    }
-
     // Is connected to {actors} section in the editproject HTML file
     @ModelAttribute("actors")
     List<Actor> showActors() {
@@ -45,17 +40,17 @@ public class EditProjectController {
         return "redirect:/editproject";
     }
 
-    @GetMapping("{id}")
-    String deleteActor(@PathVariable Long id) {
-        actorController.removeActor(id);
-        return "redirect:/editproject";
-    }
+//    @GetMapping("{id}")
+//    String deleteActor(@PathVariable Long id) {
+//        actorController.removeActor(id);
+//        return "redirect:/editproject";
+//    }
 
-    @GetMapping("{id}")
-    String deleteProject(@PathVariable Long id) {
-        projectController.removeProject(id);
-        return "redirect:/editproject";
-    }
+//    @GetMapping("{id}")
+//    String deleteProject(@PathVariable Long id) {
+//        projectController.removeProject(id);
+//        return "redirect:/editproject";
+//    }
 
     @GetMapping
     String page() {
