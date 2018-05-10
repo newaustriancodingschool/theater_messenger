@@ -1,6 +1,7 @@
 package at.refugeescode.theater_messenger.view;
 
 import at.refugeescode.theater_messenger.controller.ActorController;
+import at.refugeescode.theater_messenger.controller.ProjectController;
 import at.refugeescode.theater_messenger.persistence.model.Actor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
