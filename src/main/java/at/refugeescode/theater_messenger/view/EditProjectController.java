@@ -27,11 +27,6 @@ public class EditProjectController {
         return new Actor();
     }
 
-    @ModelAttribute("projects")
-    List<Project> showProjects() {
-        return projectController.showAllProjects();
-    }
-
     // Is connected to {actors} section in the editproject HTML file
     @ModelAttribute("actors")
     List<Actor> showActors() {
