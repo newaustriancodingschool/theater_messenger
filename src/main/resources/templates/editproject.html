@@ -30,7 +30,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/engineer">Sound Engineer</a></li>
                 <li><a href="/assistant">Sound Assistant</a></li>
-                <li><a href="/projects">Projects</a></li>
+                <li><a href="/">Home</a></li>
             </ul>
         </div>
     </div>
@@ -42,7 +42,7 @@
     <p><br/></p>
     <form class="form-inline" th:object="${newActor}" th:action="@{/}" method="post">
         <div class="form-group">
-            <label for="firstName"> Actor:</label>
+            <label for="firstName">New Actor:</label>
             <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="First Name"
                    required>
             <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name"
@@ -56,7 +56,7 @@
         <button type="submit" class="btn btn-default">Add</button>
         <p><br/></p>
 
-        <p>Actors</p>
+        <h2>Actors</h2>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -76,7 +76,7 @@
                     <td th:text="${actor.roleName}">Role Name</td>
                     <td th:text="${actor.micNumber}">Mic Number</td>
                     <td href="/actor" class="btn btn-default">Edit</td>
-                    <td th:action="@{/{id}(id=${actor.id})}" class="btn btn-default">Delete</td>
+                    <td th:action="@{/{id}(id=${actor.id})}" name="action" value="delete" type="submit" class="btn btn-default">Delete</td>
 
                 </tr>
                 </tbody>

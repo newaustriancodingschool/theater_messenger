@@ -28,6 +28,7 @@ public class HomeController {
         return "redirect:/";
     }
 
+
     // home is the name of HTML file
     @GetMapping
     String page(){
