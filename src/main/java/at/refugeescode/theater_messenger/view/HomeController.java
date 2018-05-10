@@ -6,12 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/newproject")
-public class NewProjectController {
+@RequestMapping("/")
+public class HomeController {
 
     private ProjectController projectController;
 
-    public NewProjectController(ProjectController projectController) {
+    public HomeController(ProjectController projectController) {
         this.projectController = projectController;
     }
 
@@ -25,11 +25,12 @@ public class NewProjectController {
     @PostMapping
     String newProject(Project project){
         projectController.addNewProject(project);
-        return "redirect:/newproject";
+        return "redirect:/";
     }
 
+    // home is the name of HTML file
     @GetMapping
     String page(){
-        return "newproject";
+        return "home";
     }
 }
