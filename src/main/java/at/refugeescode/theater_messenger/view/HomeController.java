@@ -5,8 +5,6 @@ import at.refugeescode.theater_messenger.persistence.model.Project;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -22,7 +20,7 @@ public class HomeController {
     Project newProject(){
         return new Project();
     }
-    
+
     // Form action
     @PostMapping
     String newProject(Project project){
@@ -30,6 +28,8 @@ public class HomeController {
         return "redirect:/";
     }
 
+
+    // home is the name of HTML file
     @GetMapping
     String page(){
         return "home";
