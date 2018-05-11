@@ -16,6 +16,7 @@ public class ProjectController {
     }
 
     public void addNewProject(Project project) {
+        System.out.println(project);
         projectRepository.save(project);
     }
 
@@ -25,5 +26,9 @@ public class ProjectController {
 
     public void removeProject(Long id) {
         projectRepository.deleteById(id);
+    }
+
+    public void findProject(Long id) {
+        projectRepository.findById(id);
     }
 }
