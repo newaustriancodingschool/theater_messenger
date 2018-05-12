@@ -5,6 +5,7 @@ import at.refugeescode.theater_messenger.persistence.repository.ProjectRepositor
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectController {
@@ -28,7 +29,7 @@ public class ProjectController {
         projectRepository.deleteById(id);
     }
 
-    public void findProject(Long id) {
-        projectRepository.findById(id);
+    public Optional<Project> findProject(Long id) {
+        return projectRepository.findById(id);
     }
 }
