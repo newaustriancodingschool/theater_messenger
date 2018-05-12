@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>Sound Engineer</title>
+    <title>Home Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,12 +41,95 @@
     <h1>Theater Messenger</h1>
     <p>We care about your sound</p>
     <p><br/></p>
+    <form class="form-inline" th:object="${newProject}" th:action="@{/engineer}" method="post">
+        <div class="form-group">
+            <label for="projectName">New Project:</label>
+            <input type="text" class="form-control" id="projectName" th:field="*{name}" placeholder="Name"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="startDate"> &nbsp;&nbsp;Start:</label>
+            <input type="date" class="form-control" id="startDate" th:field="*{startDate}" placeholder="Start Date"
+        >
+        </div>
+        <div class="form-group">
+            <label for="endDate"> &nbsp;&nbsp;End:</label>
+            <input type="date" class="form-control" id="endDate" th:field="*{endDate}" placeholder="End Date"
+        >
+        </div>
+            <button type="submit" class="btn btn-default">Add</button>
+    </form>
+    <p><br/></p>
+    <form class="form-inline" th:object="${newActor}" th:action="@{/}" method="post">
+        <div class="form-group">
+            <label for="firstName">New Actor:</label>
+            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="First Name"
+                   required>
+            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name"
+                   required>
+            <input type="text" class="form-control" id="roleName" th:field="*{roleName}" placeholder="Role Name"
+                   required>
+            <input type="number" min="1" class="form-control" id="micNumber" th:field="*{micNumber}"
+                   placeholder="Mic Number"
+                   required>
+        </div>
+        <button type="submit" class="btn btn-default">Add</button>
+        <p><br/></p>
+    </form>
 
+    <p><br/></p>
+    <h3>Projects</h3>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="project: ${projects}"  class="text-left">
+                <td th:text="${project.id}">ID</td>
+                <td th:text="${project.name}">Name</td>
+                <td th:text="${project.startDate}">01/05/2018</td>
+                <td th:text="${project.endDate}">02/09/2018</td>
+                <td th:action="@{/{id}(id=${project.id})}" class="btn btn-default">Delete Project</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <h3>Actors</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role Name</th>
+                    <th>Mic Number</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="actor: ${actors}" class="text-left">
+                    <td th:text="${actor.firstName}">First Name</td>
+                    <td th:text="${actor.lastName}">Last Name</td>
+                    <td th:text="${actor.roleName}">Role Name</td>
+                    <td th:text="${actor.micNumber}">Mic Number</td>
+                    <td th:action="@{/{id}(id=${actor.id})}" name="action" value="delete" type="submit" class="btn btn-default">Delete Actor</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script th:src="@{/js/script.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script th:src="@{/js/script.js}"></script>
 
 </body>
 </html>

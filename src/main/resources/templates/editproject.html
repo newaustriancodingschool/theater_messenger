@@ -1,96 +1,93 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/2005/Atom">
-<head>
-    <meta charset="UTF-8">
-    <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>Edit Project Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/2005/Atom">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--&lt;!&ndash; Theme Made By www.w3schools.com - No Copyright &ndash;&gt;-->
+    <!--<title>Edit Project Page</title>-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">-->
+    <!--<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>-->
 
-</head>
+<!--</head>-->
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!--<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">-->
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#myPage">Theater Messenger</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/engineer">Sound Engineer</a></li>
-                <li><a href="/assistant">Sound Assistant</a></li>
-                <li><a href="/">Home</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="#myPage">Theater Messenger</a>-->
+        <!--</div>-->
+        <!--<div class="collapse navbar-collapse" id="myNavbar">-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="/engineer">Sound Engineer</a></li>-->
+                <!--<li><a href="/assistant">Sound Assistant</a></li>-->
+                <!--<li><a href="/">Home</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 
-<div class="jumbotron text-center">
-    <h1>Theater Messenger</h1>
-    <p>We care about your sound</p>
-    <p><br/></p>
-    <form class="form-inline" th:object="${newActor}" th:action="@{/}" method="post">
-        <div class="form-group">
-            <label for="firstName">New Actor:</label>
-            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="First Name"
-                   required>
-            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name"
-                   required>
-            <input type="text" class="form-control" id="roleName" th:field="*{roleName}" placeholder="Role Name"
-                   required>
-            <input type="number" min="1" class="form-control" id="micNumber" th:field="*{micNumber}"
-                   placeholder="Mic Number"
-                   required>
-        </div>
-        <button type="submit" class="btn btn-default">Add</button>
-        <p><br/></p>
+<!--<div class="jumbotron text-center">-->
+    <!--<h1>Theater Messenger</h1>-->
+    <!--<p>We care about your sound</p>-->
+    <!--<p><br/></p>-->
+    <!--<form class="form-inline" th:object="${newActor}" th:action="@{/}" method="post">-->
+        <!--<div class="form-group">-->
+            <!--<label for="firstName">New Actor:</label>-->
+            <!--<input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="First Name"-->
+                   <!--required>-->
+            <!--<input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name"-->
+                   <!--required>-->
+            <!--<input type="text" class="form-control" id="roleName" th:field="*{roleName}" placeholder="Role Name"-->
+                   <!--required>-->
+            <!--<input type="number" min="1" class="form-control" id="micNumber" th:field="*{micNumber}"-->
+                   <!--placeholder="Mic Number"-->
+                   <!--required>-->
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-default">Add</button>-->
+        <!--<p><br/></p>-->
 
-        <h3>Actors</h3>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Role Name</th>
-                    <th>Mic Number</th>
-                    <th></th>
+        <!--<h3>Actors</h3>-->
+        <!--<div class="table-responsive">-->
+            <!--<table class="table">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>First Name</th>-->
+                    <!--<th>Last Name</th>-->
+                    <!--<th>Role Name</th>-->
+                    <!--<th>Mic Number</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr th:each="actor: ${actors}" class="text-left">-->
+                    <!--<td th:text="${actor.firstName}">First Name</td>-->
+                    <!--<td th:text="${actor.lastName}">Last Name</td>-->
+                    <!--<td th:text="${actor.roleName}">Role Name</td>-->
+                    <!--<td th:text="${actor.micNumber}">Mic Number</td>-->
+                    <!--<td href="/actor" class="btn btn-default">Edit</td>-->
+                    <!--<td th:action="@{/{id}(id=${actor.id})}" name="action" value="delete" type="submit" class="btn btn-default">Delete</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+        <!--<button th:action="@{/{id}(id=${actor.id})}" class="btn btn-default">Delete Project</button>-->
+    <!--</form>-->
+<!--</div>-->
 
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="actor: ${actors}" class="text-left">
-                    <td th:text="${actor.firstName}">First Name</td>
-                    <td th:text="${actor.lastName}">Last Name</td>
-                    <td th:text="${actor.roleName}">Role Name</td>
-                    <td th:text="${actor.micNumber}">Mic Number</td>
-                    <td href="/actor" class="btn btn-default">Edit</td>
-                    <td th:action="@{/{id}(id=${actor.id})}" name="action" value="delete" type="submit" class="btn btn-default">Delete</td>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--<script th:src="@{/js/script.js}"></script>-->
 
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <button th:action="@{/{id}(id=${actor.id})}" class="btn btn-default">Delete Project</button>
-    </form>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script th:src="@{/js/script.js}"></script>
-
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
 
 
