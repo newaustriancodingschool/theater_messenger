@@ -37,11 +37,10 @@ public class EngineerController {
     }
 
     @GetMapping("/editproject/{id}")
-    String editProject(@RequestParam Long id) {
+    String editProject(@PathVariable Long id) {
         projectController.findProject(id);
         return "redirect:/editproject";
     }
-
 
     // engineer is the name of HTML file
     @GetMapping
