@@ -3,6 +3,7 @@ package at.refugeescode.theater_messenger.persistence.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class Project {
     private String endDate;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Actor> actors;
+    private Set<Actor> actors = new HashSet<>();
 
     public Long getId() {
         return id;
