@@ -67,8 +67,8 @@
                 <td th:text="${actor.roleName}">Role Name</td>
                 <td th:text="${actor.micNumber}">Mic Number</td>
                 <td>
-                    <a th:href="@{/editproject/actor(projectId=${project.id},actorId=${actor.id})}" class="btn btn-default">
-                        Delete
+                    <a th:href="@{/selectproject/actor(projectId=${project.id},actorId=${actor.id})}" class="btn btn-default">
+                        Select
                         <!--<button type="submit" class="btn btn-default">Delete</button>-->
                     </a>
                 </td>
