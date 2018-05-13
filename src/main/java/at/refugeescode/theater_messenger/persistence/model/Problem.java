@@ -1,9 +1,7 @@
 package at.refugeescode.theater_messenger.persistence.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Problem {
@@ -12,14 +10,16 @@ public class Problem {
     @GeneratedValue
     private Long id;
     private String name;
-    private Long actorId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Actor actor;
 
     public Problem() {
     }
 
-    public Problem(String name, Long actorId) {
+    public Problem(String name, Actor actor) {
         this.name = name;
-        this.actorId = actorId;
+        this.actor = actor;
     }
 
     public Long getId() {
@@ -38,12 +38,12 @@ public class Problem {
         this.name = name;
     }
 
-    public Long getActorId() {
-        return actorId;
+    public Actor getActor() {
+        return actor;
     }
 
-    public void setActorId(Long actorId) {
-        this.actorId = actorId;
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Problem {
         return "Problem{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", actorId=" + actorId +
+                ", actor=" + actor +
                 '}';
     }
 }
