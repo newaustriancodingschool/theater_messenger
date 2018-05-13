@@ -18,7 +18,8 @@ public class Project {
     private String endDate;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Actor> actors = new HashSet<>();;
+
+    private Set<Actor> actors = new HashSet<>();
 
     public Long getId() {
         return id;
