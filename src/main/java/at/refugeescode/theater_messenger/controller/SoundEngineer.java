@@ -12,7 +12,7 @@ public class SoundEngineer {
 
     private ProblemFactory problemFactory;
     private ProblemRepository problemRepository;
-    private Problem problem = new Problem();
+//    private Problem problem = new Problem();
 
     public SoundEngineer(ProblemFactory problemFactory, ProblemRepository problemRepository) {
         this.problemFactory = problemFactory;
@@ -26,9 +26,24 @@ public class SoundEngineer {
     }
 
 
-    public void saveActor(Actor actor) {
+//    public void saveActor(Actor actor) {
+//        problem.setActor(actor);
+//        Problem savedActor = problemRepository.save(problem);
+//        System.out.println("savedActor:" + savedActor);
+//    }
+
+    public void saveActor(Actor actor, Long problemId) {
+        Problem problem = problemRepository.findById(problemId).get();
         problem.setActor(actor);
         Problem savedActor = problemRepository.save(problem);
         System.out.println("savedActor:" + savedActor);
     }
+
+    public void addNewProblem(String problemName, Long problemId) {
+        Problem problem = problemRepository.findById(problemId).get();
+        problem.setName(problemName);
+        Problem savedProblem = problemRepository.save(problem);
+        System.out.println("savedProblem:" + savedProblem);
+    }
+
 }
