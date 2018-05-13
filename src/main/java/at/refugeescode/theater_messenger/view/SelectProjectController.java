@@ -13,11 +13,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("/editproject")
-public class EditProjectController {
+public class SelectProjectController {
 
     private ProjectController projectController;
 
-    public EditProjectController(ProjectController projectController) {
+    public SelectProjectController(ProjectController projectController) {
         this.projectController = projectController;
     }
 
@@ -59,40 +59,4 @@ public class EditProjectController {
         projectController.deleteProject(projectId);
         return "redirect:/engineer";
     }
-
-    //    Form object
-//    @ModelAttribute("newActor")
-//    Actor newActor() {
-//        return new Actor();
-//    }
-//
-////     Is connected to {actors} section in the editproject HTML file
-//
-//    // Form action
-//
-//    @GetMapping("/{id}")
-//    String page(@PathVariable Long id) {
-//        actorController.removeActor(id);
-//        return "redirect:/editproject";
-//    }
-
-//    @GetMapping("{id}")
-//    String deleteProject(@PathVariable Long id) {
-//        projectController.removeProject(id);
-//        return "redirect:/editproject";
-//    }
-
-//    @GetMapping(params = {"projectId","actorId"})
-//    String deleteActor(@RequestParam("projectId")Long projectId,@RequestParam("actorId")Long actorId, Model model) {
-//        Optional<Project> project = projectController.findProject(projectId);
-//        model.addAttribute("project", project.get());
-//        model.addAttribute("actors",projectController.showAllActors(projectId));
-//        System.out.println("===ID//"+projectId);
-//        System.out.println("===Project//"+project);
-//
-//
-//        return "editproject";
-//    }
-
-
 }

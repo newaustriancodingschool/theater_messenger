@@ -1,10 +1,12 @@
 package at.refugeescode.theater_messenger.view;
 
 import at.refugeescode.theater_messenger.controller.ProjectController;
-import at.refugeescode.theater_messenger.controller.SoundEngineer;
 import at.refugeescode.theater_messenger.persistence.model.Project;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -16,6 +18,12 @@ public class EngineerController {
 
     public EngineerController(ProjectController projectController) {
         this.projectController = projectController;
+    }
+
+    // engineer is the name of HTML file
+    @GetMapping
+    String page() {
+        return "engineer";
     }
 
     // Form object
@@ -36,16 +44,51 @@ public class EngineerController {
         return projectController.showAllProjects();
     }
 
-    @GetMapping("/editproject/{id}")
-    String editProject(@PathVariable Long id) {
-        projectController.findProject(id);
-        return "redirect:/editproject";
-    }
+//    @ModelAttribute("newActor")
+//    Actor newActor() {
+//        return new Actor();
+//    }
 
-    // engineer is the name of HTML file
-    @GetMapping
-    String page() {
-        return "engineer";
-    }
+//    @ModelAttribute("actors")
+//    Set<Actor> showActors() {
+//        return projectController.showAllActors();
+//    }
+
+//    @PostMapping("/{id}")
+//    String newActor(@PathVariable Long projectId, Actor actor) {
+//        projectController.addNewActor(projectId, actor);
+//        return "redirect:/engineer";
+//    }
+
+
+//    @PostMapping(value = "/editproject",params = "projectId")
+//    String editProject(@RequestParam Long projectId) {
+//        projectController.findProject(projectId);
+//        System.out.println(projectId);
+//        return "redirect:/editproject";
+//    }
+
+//    Project project = new Project();
+//
+//    @ModelAttribute("p")
+//    Project editParticipant(){
+//        return  project;
+//    }
+
+//    @PostMapping("update")
+//    String goedit(@RequestParam String id ){
+//
+//        Optional<Project> oldProject = projectRepository.findAll().stream()
+//                .filter(project -> project.getId().toString().equalsIgnoreCase(id))
+//                .findFirst();
+//        project =oldProject.get();
+//        return "redirect:/edit";
+//    }
+//
+//    @GetMapping("/edit")
+//    String page6(){
+//        return "edit";
+//    }
+
 
 }

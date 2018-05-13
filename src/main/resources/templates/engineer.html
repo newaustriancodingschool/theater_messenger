@@ -60,11 +60,30 @@
             <button type="submit" class="btn btn-default">Add</button>
     </form>
     <p><br/></p>
+    <form class="form-inline" th:object="${newActor}" th:action="@{/}" method="post">
+        <div class="form-group">
+            <label for="firstName">New Actor:</label>
+            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="First Name"
+                   required>
+            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name"
+                   required>
+            <input type="text" class="form-control" id="roleName" th:field="*{roleName}" placeholder="Role Name"
+                   required>
+            <input type="number" min="1" class="form-control" id="micNumber" th:field="*{micNumber}"
+                   placeholder="Mic Number"
+                   required>
+        </div>
+        <button type="submit" class="btn btn-default">Add</button>
+        <p><br/></p>
+    </form>
+
+    <p><br/></p>
     <h3>Projects</h3>
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
+                <th>Project ID</th>
                 <th>Project Name</th>
                 <th>Start date</th>
                 <th>End date</th>
@@ -73,25 +92,39 @@
             </thead>
             <tbody>
             <tr th:each="project: ${projects}"  class="text-left">
+                <td th:text="${project.id}">ID</td>
                 <td th:text="${project.name}">Name</td>
                 <td th:text="${project.startDate}">01/05/2018</td>
                 <td th:text="${project.endDate}">02/09/2018</td>
-                <td>
-                    <form method="GET" th:action="@{/editproject(projectId=${project.Id})}">
-                        <button type="submit" name="submit" value="value" class="btn btn-default">EDIT</button>
-                    </form>
-                    <!--<form method="GET" th:action="@{/editproject}">-->
-                        <!--<input type="hidden" name="projectId" id="projectId" th:value="${project.Id}" />-->
-                        <!--<button type="submit" name="submit" value="value" class="btn btn-default">EDIT</button>-->
-                    <!--</form>-->
-                </td>
+                <td th:action="@{/{id}(id=${project.id})}" class="btn btn-default">Delete Project</td>
             </tr>
-                <!--&lt;!&ndash;<td href="/editproject" class="btn btn-default">Edit Project</a></td>&ndash;&gt;-->
-                <!--<td th:action="@{/editproject/{id}(id=${project.id})}" name="action" value="edit" type="submit" class="btn btn-default">Edit</td>-->
-
             </tbody>
         </table>
     </div>
+
+        <h3>Actors</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role Name</th>
+                    <th>Mic Number</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="actor: ${actors}" class="text-left">
+                    <td th:text="${actor.firstName}">First Name</td>
+                    <td th:text="${actor.lastName}">Last Name</td>
+                    <td th:text="${actor.roleName}">Role Name</td>
+                    <td th:text="${actor.micNumber}">Mic Number</td>
+                    <td th:action="@{/{id}(id=${actor.id})}" name="action" value="delete" type="submit" class="btn btn-default">Delete Actor</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

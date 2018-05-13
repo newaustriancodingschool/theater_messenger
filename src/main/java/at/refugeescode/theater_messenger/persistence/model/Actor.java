@@ -15,6 +15,16 @@ public class Actor {
     private String roleName;
     private Integer micNumber;
 
+    public Actor() {
+    }
+
+    public Actor(String firstName, String lastName, String roleName, Integer micNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.roleName = roleName;
+        this.micNumber = micNumber;
+    }
+
     public Long getId() {
         return id;
     }
