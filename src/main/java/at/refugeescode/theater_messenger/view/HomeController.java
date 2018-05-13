@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 
-    // home is the name of HTML file
     @GetMapping
     String page() {
         return "home";
