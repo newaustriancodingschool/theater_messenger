@@ -7,12 +7,8 @@ import at.refugeescode.theater_messenger.persistence.model.Problem;
 import at.refugeescode.theater_messenger.persistence.model.Project;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -41,21 +37,37 @@ public class CreateMessageController {
         return new Problem();
     }
 
-    @ModelAttribute("showproblems")
-    List<String> showProblems() {
-        return soundEngineer.showProblems();
+//    @ModelAttribute("showproblems")
+//    List<String> showProblems() {
+//        return soundEngineer.showProblems();
+//    }
+
+    @PostMapping("/{projectId}")
+    String newProblem(@PathVariable Long projectId, Problem problem) {
+        Long problemId = problem.getId();
+        String problemName = problem.getName();
+        soundEngineer.addNewProblem(problemName, problemId);
+        return "redirect:/createmessage/?id=" + projectId;
     }
 
-
-    @RequestMapping(value = "actor", params = {"projectId", "actorId"}, method = GET)
-    String selectActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, Model model) {
+    @RequestMapping(value = "actor", params = {"projectId", "actorId", "problemId"}, method = GET)
+    String selectActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, @RequestParam("problemId") Long problemId, Model model) {
         Optional<Project> project = projectController.findProject(projectId);
         model.addAttribute("project", project.get());
         model.addAttribute("actors", projectController.showAllActors(projectId));
         Actor actor = projectController.selectActor(projectId, actorId);
-        soundEngineer.saveActor(actor);
+        soundEngineer.saveActor(actor, problemId);
         return "redirect:/createmessage/?id=" + projectId;
     }
 
+//    @RequestMapping(value = "actor", params = {"projectId", "actorId"}, method = GET)
+//    String selectActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, Model model) {
+//        Optional<Project> project = projectController.findProject(projectId);
+//        model.addAttribute("project", project.get());
+//        model.addAttribute("actors", projectController.showAllActors(projectId));
+//        Actor actor = projectController.selectActor(projectId, actorId);
+//        soundEngineer.saveActor(actor);
+//        return "redirect:/createmessage/?id=" + projectId;
+//    }
 
 }
