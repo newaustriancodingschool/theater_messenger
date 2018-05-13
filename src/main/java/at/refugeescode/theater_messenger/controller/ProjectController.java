@@ -1,11 +1,14 @@
 package at.refugeescode.theater_messenger.controller;
 
+import at.refugeescode.theater_messenger.persistence.model.Actor;
 import at.refugeescode.theater_messenger.persistence.model.Project;
 import at.refugeescode.theater_messenger.persistence.repository.ProjectRepository;
+import org.apache.el.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ProjectController {
@@ -32,4 +35,18 @@ public class ProjectController {
     public Optional<Project> findProject(Long id) {
         return projectRepository.findById(id);
     }
+
+    public Set<Actor> showAllActors() {
+        return projectRepository.findAll().stream()
+                .findFirst().get().getActors();
+//                .filter(project -> project.getId().equals(id)).findFirst().get().getActors();
+    }
+
+
+//    public void addNewActor(Actor actor) {
+////        Optional<Project> actualProject = projectRepository.findById(projectId);
+////        project.setActors();
+//        projectRepository.save(project);
+//
+//    }
 }
