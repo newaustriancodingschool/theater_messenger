@@ -12,32 +12,32 @@ public class SoundEngineer {
 
     private ProblemFactory problemFactory;
     private ProblemRepository problemRepository;
-//    private Problem problem = new Problem();
+    private Problem problem = new Problem();
 
     public SoundEngineer(ProblemFactory problemFactory, ProblemRepository problemRepository) {
         this.problemFactory = problemFactory;
         this.problemRepository = problemRepository;
     }
 
-    public List<String> showProblems() {
-        List<String> problems = problemFactory.createProblem();
-        System.out.println(problems);
-        return problems;
-    }
-
-
-//    public void saveActor(Actor actor) {
-//        problem.setActor(actor);
-//        Problem savedActor = problemRepository.save(problem);
-//        System.out.println("savedActor:" + savedActor);
+//    public List<String> showProblems() {
+//        List<String> problems = problemFactory.createProblem();
+//        System.out.println(problems);
+//        return problems;
 //    }
 
-    public void saveActor(Actor actor, Long problemId) {
-        Problem problem = problemRepository.findById(problemId).get();
+
+    public void saveActor(Actor actor) {
         problem.setActor(actor);
         Problem savedActor = problemRepository.save(problem);
         System.out.println("savedActor:" + savedActor);
     }
+
+//    public void saveActor(Actor actor, Long problemId) {
+//        Problem problem = problemRepository.findById(problemId).get();
+//        problem.setActor(actor);
+//        Problem savedActor = problemRepository.save(problem);
+//        System.out.println("savedActor:" + savedActor);
+//    }
 
     public void addNewProblem(String problemName, Long problemId) {
         Problem problem = problemRepository.findById(problemId).get();
