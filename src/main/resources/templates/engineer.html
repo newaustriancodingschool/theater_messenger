@@ -65,7 +65,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Project ID</th>
                 <th>Project Name</th>
                 <th>Start date</th>
                 <th>End date</th>
@@ -74,12 +73,11 @@
             </thead>
             <tbody>
             <tr th:each="project: ${projects}" class="text-left">
-                <td th:text="${project.id}">ID</td>
                 <td th:text="${project.name}">Name</td>
                 <td th:text="${project.startDate}">01/05/2018</td>
                 <td th:text="${project.endDate}">02/09/2018</td>
                 <td>
-                    <a th:href="@{/selectproject/(id=${project.id})}" class="btn btn-default" >Select</a>
+                    <a th:href="@{/createmessage/(id=${project.id})}" class="btn btn-default" >Select</a>
 
                     <a th:href="@{/editproject/(id=${project.id})}" class="btn btn-default" >Edit</a>
                 </td>
