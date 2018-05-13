@@ -1,6 +1,7 @@
 package at.refugeescode.theater_messenger.view;
 
 import at.refugeescode.theater_messenger.controller.ProjectController;
+import at.refugeescode.theater_messenger.controller.SoundEngineer;
 import at.refugeescode.theater_messenger.persistence.model.Actor;
 import at.refugeescode.theater_messenger.persistence.model.Project;
 import org.springframework.stereotype.Controller;
@@ -12,51 +13,34 @@ import java.util.Optional;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
-@RequestMapping("/editproject")
+@RequestMapping("/selectproject")
 public class SelectProjectController {
 
     private ProjectController projectController;
+    private SoundEngineer soundEngineer;
 
-    public SelectProjectController(ProjectController projectController) {
+    public SelectProjectController(ProjectController projectController, SoundEngineer soundEngineer) {
         this.projectController = projectController;
-    }
-
-    @PostMapping("/{projectId}")
-    String newActor(@PathVariable Long projectId, Actor actor) {
-        projectController.addNewActor(projectId, actor);
-        System.out.println("----ADD NEW ACROT");
-        return "redirect:/editproject/?id=" + projectId;
-    }
-
-    @ModelAttribute("newActor")
-    Actor newActor() {
-        return new Actor();
+        this.soundEngineer = soundEngineer;
     }
 
     @GetMapping(params = {"id"})
     String page(@RequestParam("id") Long id, Model model) {
-//        Optional<Project> project = projectController.findProject(id);
         model.addAttribute("project", projectController.findProject(id).get());
         model.addAttribute("actors", projectController.showAllActors(id));
-        System.out.println("===ID//" + id);
-        return "editproject";
+        return "selectproject";
     }
 
     @RequestMapping(value = "actor", params = {"projectId", "actorId"}, method = GET)
-    String deleteActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, Model model) {
+    String selectActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, Model model) {
         Optional<Project> project = projectController.findProject(projectId);
         model.addAttribute("project", project.get());
         model.addAttribute("actors", projectController.showAllActors(projectId));
-        projectController.deleteActor(projectId, actorId);
-        return "redirect:/editproject/?id=" + projectId;
+        Actor actor = projectController.selectActor(projectId, actorId);
+        System.out.println(actor);
+        return "redirect:/selectproject/?id=" + projectId;
     }
+    
 
-    @RequestMapping(value = "project", params = {"projectId"}, method = GET)
-    String deleteProject(@RequestParam("projectId") Long projectId, Model model) {
-        Optional<Project> project = projectController.findProject(projectId);
-        model.addAttribute("project", project.get());
-        model.addAttribute("actors", projectController.showAllActors(projectId));
-        projectController.deleteProject(projectId);
-        return "redirect:/engineer";
-    }
+
 }
