@@ -47,7 +47,6 @@ public class ProjectController {
         actors.add(actor);
         actualProject.setActors(actors);
         projectRepository.save(actualProject);
-
     }
 
     public void deleteActor(Long projectId, Long actorId) {
@@ -65,8 +64,11 @@ public class ProjectController {
         projectRepository.deleteById(projectId);
     }
 
-    public Set<Actor> showAllActors() {
-        return projectRepository.findAll().stream()
-                .findFirst().get().getActors();
+    public Actor selectActor(Long projectId, Long actorId) {
+        Project project = projectRepository.findById(projectId).get();
+        return project.getActors().stream()
+                .filter(actor -> actor.getId().equals(actorId))
+                .findFirst()
+                .get();
     }
 }
