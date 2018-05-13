@@ -13,25 +13,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("/editproject")
-public class EditProjectController {
+public class SelectProjectController {
 
     private ProjectController projectController;
 
-    public EditProjectController(ProjectController projectController) {
+    public SelectProjectController(ProjectController projectController) {
         this.projectController = projectController;
-    }
-
-    @GetMapping(params = {"id"})
-    String page(@RequestParam("id") Long id, Model model) {
-        model.addAttribute("project", projectController.findProject(id).get());
-        model.addAttribute("actors", projectController.showAllActors(id));
-        System.out.println("===ID//" + id);
-        return "editproject";
-    }
-
-    @ModelAttribute("newActor")
-    Actor newActor() {
-        return new Actor();
     }
 
     @PostMapping("/{projectId}")
@@ -39,6 +26,20 @@ public class EditProjectController {
         projectController.addNewActor(projectId, actor);
         System.out.println("----ADD NEW ACROT");
         return "redirect:/editproject/?id=" + projectId;
+    }
+
+    @ModelAttribute("newActor")
+    Actor newActor() {
+        return new Actor();
+    }
+
+    @GetMapping(params = {"id"})
+    String page(@RequestParam("id") Long id, Model model) {
+//        Optional<Project> project = projectController.findProject(id);
+        model.addAttribute("project", projectController.findProject(id).get());
+        model.addAttribute("actors", projectController.showAllActors(id));
+        System.out.println("===ID//" + id);
+        return "editproject";
     }
 
     @RequestMapping(value = "actor", params = {"projectId", "actorId"}, method = GET)

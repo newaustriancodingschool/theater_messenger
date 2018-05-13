@@ -3,12 +3,12 @@ package at.refugeescode.theater_messenger.controller;
 import at.refugeescode.theater_messenger.persistence.model.Actor;
 import at.refugeescode.theater_messenger.persistence.model.Project;
 import at.refugeescode.theater_messenger.persistence.repository.ProjectRepository;
-import org.apache.el.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectController {
@@ -28,25 +28,45 @@ public class ProjectController {
         return projectRepository.findAll();
     }
 
-    public void removeProject(Long id) {
-        projectRepository.deleteById(id);
-    }
 
     public Optional<Project> findProject(Long id) {
         return projectRepository.findById(id);
     }
 
+    public Set<Actor> showAllActors(Long id) {
+        return projectRepository.findAll().stream()
+                .filter(project -> project.getId().equals(id))
+                .findFirst()
+                .get()
+                .getActors();
+    }
+
+    public void addNewActor(Long projectId, Actor actor) {
+        Project actualProject = projectRepository.findById(projectId).get();
+        Set<Actor> actors = actualProject.getActors();
+        actors.add(actor);
+        actualProject.setActors(actors);
+        projectRepository.save(actualProject);
+
+    }
+
+    public void deleteActor(Long projectId, Long actorId) {
+        Project project = projectRepository.findById(projectId).get();
+        project.setActors(project.getActors().stream()
+                .filter(actor -> !actor.getId().equals(actorId))
+                .collect(Collectors.toSet())
+        );
+
+        projectRepository.save(project);
+        System.out.println("-----REMOVE:" + projectId + actorId);
+    }
+
+    public void deleteProject(Long projectId) {
+        projectRepository.deleteById(projectId);
+    }
+
     public Set<Actor> showAllActors() {
         return projectRepository.findAll().stream()
                 .findFirst().get().getActors();
-//                .filter(project -> project.getId().equals(id)).findFirst().get().getActors();
     }
-
-
-//    public void addNewActor(Actor actor) {
-////        Optional<Project> actualProject = projectRepository.findById(projectId);
-////        project.setActors();
-//        projectRepository.save(project);
-//
-//    }
 }
