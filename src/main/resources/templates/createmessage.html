@@ -40,76 +40,45 @@
     <!--<h1>Theater Messenger</h1>-->
     <!--<p>We care about your sound</p>-->
     <!--<p><br/></p>-->
-    <form class="form-inline" th:object="${newProblem}" th:action="@{/createmessage/{id}(id=${project.id})}" method="post">
+    <div th:if="${success}" class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Your message has been sent.
+    </div>
+    <form class="form-inline" th:action="@{/createmessage}" method="post">
+        <h3>Select Problem:</h3>
         <div class="form-group">
-            <h3>Select Problem:</h3>
-            <label class="container">CHANGE BATTERIES
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">CHECK CABLE
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">CHECK ANTENNA
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">CHECK FREQUENCY
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">CLEAN MIC
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">CHANGE MIC
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">CHANGE TAPE
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">UNKNOWN PROBLEM
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
+
+            <div th:each="problem: ${problems}"  id="donate">
+
+                    <label class="green">
+                        <input type="radio" name="problem" th:value="${problem}">
+                        <span th:text="${problem}">Problem Type</span>
+                    </label>
+
+            </div>
         </div>
-        <button type="submit" class="btn btn-default">Add</button>
+        <input type="hidden" name="projectId" th:value="${projectId}"/>
+        <div>
+            <p><br/></p>
+            <h3>Select Problem:</h3>
+
+            <div th:each="actor: ${actors}" class="form-group">
+
+                <button type="submit" name="actorId" th:value="${actor.id}" class="btn actorButton btn-default">
+
+                    <span th:text="${actor.firstName}"></span>
+                    <span th:text="${actor.lastName}"></span><br>
+                    <span th:text="${actor.roleName}"></span><br>
+                    <span>MicNr: </span>
+                    <span th:text="${actor.micNumber}"></span>
+
+                </button>
+            </div>
+        </div>
     </form>
     <p><br/></p>
-
-    <h3>Select Actor:</h3>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Role Name</th>
-                <th>Mic Number</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="actor: ${actors}" class="text-left">
-                <td th:text="${actor.firstName}">First Name</td>
-                <td th:text="${actor.lastName}">Last Name</td>
-                <td th:text="${actor.roleName}">Role Name</td>
-                <td th:text="${actor.micNumber}">Mic Number</td>
-                <td>
-                    <a th:href="@{/createmessage/actor(projectId=${project.id},actorId=${actor.id})}" class="btn btn-default">
-                        Select
-                        <!--<button type="submit" class="btn btn-default">Delete</button>-->
-                    </a>
-                </td>
-                <!--<td th:action="@{/deleteActor/(projectId=${project.id},actorId=${actor.id})}" name="action" value="delete" type="submit" class="btn btn-default">Delete</td>-->
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -117,5 +86,3 @@
 
 </body>
 </html>
-
-

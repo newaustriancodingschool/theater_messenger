@@ -19,11 +19,11 @@ public class SoundEngineer {
         this.problemRepository = problemRepository;
     }
 
-//    public List<String> showProblems() {
-//        List<String> problems = problemFactory.createProblem();
-//        System.out.println(problems);
-//        return problems;
-//    }
+    public List<String> showProblems() {
+        List<String> problems = problemFactory.createProblem();
+        System.out.println(problems);
+        return problems;
+    }
 
 
     public void saveActor(Actor actor) {
@@ -46,4 +46,11 @@ public class SoundEngineer {
         System.out.println("savedProblem:" + savedProblem);
     }
 
+    public void saveProblem(String problemName, Actor actor) {
+        Problem problem = new Problem();
+        problem.setName(problemName);
+        problem.setActor(actor);
+        problemRepository.save(problem);
+        System.out.println("Message:" + problem);
+    }
 }

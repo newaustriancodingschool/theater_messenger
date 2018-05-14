@@ -77,7 +77,7 @@
                 <td th:text="${project.startDate}">01/05/2018</td>
                 <td th:text="${project.endDate}">02/09/2018</td>
                 <td>
-                    <a th:href="@{/createmessage/(id=${project.id})}" class="btn btn-default" >Select</a>
+                    <a th:href="@{/createmessage/(projectId=${project.id})}" class="btn btn-default" >Select</a>
 
                     <a th:href="@{/editproject/(id=${project.id})}" class="btn btn-default" >Edit</a>
                 </td>
