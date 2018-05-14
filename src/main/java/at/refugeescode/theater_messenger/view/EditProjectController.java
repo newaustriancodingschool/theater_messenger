@@ -21,11 +21,10 @@ public class EditProjectController {
         this.projectController = projectController;
     }
 
-    @GetMapping(params = {"id"})
-    String page(@RequestParam("id") Long id, Model model) {
+    @GetMapping(params = {"projectId"})
+    String page(@RequestParam("projectId") Long id, Model model) {
         model.addAttribute("project", projectController.findProject(id).get());
         model.addAttribute("actors", projectController.showAllActors(id));
-        System.out.println("===ID//" + id);
         return "editproject";
     }
 
@@ -37,8 +36,7 @@ public class EditProjectController {
     @PostMapping("/{projectId}")
     String newActor(@PathVariable Long projectId, Actor actor) {
         projectController.addNewActor(projectId, actor);
-        System.out.println("----ADD NEW ACROT");
-        return "redirect:/editproject/?id=" + projectId;
+        return "redirect:/editproject/?projectId=" + projectId;
     }
 
     @RequestMapping(value = "actor", params = {"projectId", "actorId"}, method = GET)
@@ -47,7 +45,7 @@ public class EditProjectController {
         model.addAttribute("project", project.get());
         model.addAttribute("actors", projectController.showAllActors(projectId));
         projectController.deleteActor(projectId, actorId);
-        return "redirect:/editproject/?id=" + projectId;
+        return "redirect:/editproject/?projectId=" + projectId;
     }
 
     @RequestMapping(value = "project", params = {"projectId"}, method = GET)

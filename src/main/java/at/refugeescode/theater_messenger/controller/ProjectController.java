@@ -18,7 +18,6 @@ public class ProjectController {
     }
 
     public void addNewProject(Project project) {
-        System.out.println(project);
         projectRepository.save(project);
     }
 
@@ -35,15 +34,15 @@ public class ProjectController {
         Optional<Project> oProject = projectRepository.findAll().stream()
                 .filter(project -> project.getId().equals(id))
                 .findFirst();
-        if(!oProject.isPresent()){
+        if (!oProject.isPresent()) {
             return new HashSet<>();
         }
         return oProject.get().getActors();
     }
 
-    public  List<Actor> findActorsSortByMicNumber(Long projectId) {
+    public List<Actor> findActorsSortByMicNumber(Long projectId) {
         return showAllActors(projectId).stream()
-                .sorted(Comparator.comparing(actor-> actor.getMicNumber()))
+                .sorted(Comparator.comparing(actor -> actor.getMicNumber()))
                 .collect(Collectors.toList());
     }
 
@@ -61,20 +60,19 @@ public class ProjectController {
                 .filter(actor -> !actor.getId().equals(actorId))
                 .collect(Collectors.toSet())
         );
-
         projectRepository.save(project);
-        System.out.println("-----REMOVE:" + projectId + actorId);
     }
 
     public void deleteProject(Long projectId) {
         projectRepository.deleteById(projectId);
     }
 
-    public Actor selectActor(Long projectId, Long actorId) {
+    public Actor findActorBy(Long projectId, Long actorId) {
         Project project = projectRepository.findById(projectId).get();
         return project.getActors().stream()
                 .filter(actor -> actor.getId().equals(actorId))
                 .findFirst()
                 .get();
     }
+
 }

@@ -37,31 +37,30 @@
 </nav>
 
 <div class="jumbotron text-center">
-    <!--<h1>Theater Messenger</h1>-->
-    <!--<p>We care about your sound</p>-->
-    <!--<p><br/></p>-->
+
     <div th:if="${success}" class="alert alert-success fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Success!</strong> Your message has been sent.
     </div>
+    <p><br/></p>
     <form class="form-inline" th:action="@{/createmessage}" method="post">
         <h3>Select Problem:</h3>
         <div class="form-group">
 
-            <div th:each="problem: ${problems}"  id="donate">
+            <div th:each="problem: ${problems}" id="donate">
 
-                    <label class="green">
-                        <input type="radio" name="problem" th:value="${problem}">
-                        <span th:text="${problem}">Problem Type</span>
-                    </label>
+                <label class="yellow">
+                    <input type="radio" name="problem" th:value="${problem}">
+                    <span th:text="${problem}">Problem Type</span>
+                </label>
 
             </div>
         </div>
         <input type="hidden" name="projectId" th:value="${projectId}"/>
         <div>
             <p><br/></p>
-            <h3>Select Problem:</h3>
-
+            <p><br/></p>
+            <h3>Select Actor:</h3>
             <div th:each="actor: ${actors}" class="form-group">
 
                 <button type="submit" name="actorId" th:value="${actor.id}" class="btn actorButton btn-default">

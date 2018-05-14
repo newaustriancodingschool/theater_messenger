@@ -2,7 +2,7 @@ body {
   font: 400 15px Lato, sans-serif;
   line-height: 1.8;
   color: #818181;
-  background-color: #8F2626;
+  background-color: #700D0D;
 }
 
 .actorButton{
@@ -43,8 +43,8 @@ font-size: 24px;
 }
 
 #donate .yellow {
-    background-color:#FFCC00;
-    color:#333;
+    background-color:#BDAF70;
+    color:#fff;
 }
 
 #donate .blue {
@@ -82,7 +82,7 @@ h4 {
   margin-bottom: 30px;
 }
 .jumbotron {
-  background-color: #8F2626;
+  background-color: #700D0D;
   color: #fff;
   padding: 100px 25px;
   font-family: Montserrat, sans-serif;
