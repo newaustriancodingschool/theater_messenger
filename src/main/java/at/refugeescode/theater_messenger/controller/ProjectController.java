@@ -5,9 +5,7 @@ import at.refugeescode.theater_messenger.persistence.model.Project;
 import at.refugeescode.theater_messenger.persistence.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,11 +32,19 @@ public class ProjectController {
     }
 
     public Set<Actor> showAllActors(Long id) {
-        return projectRepository.findAll().stream()
+        Optional<Project> oProject = projectRepository.findAll().stream()
                 .filter(project -> project.getId().equals(id))
-                .findFirst()
-                .get()
-                .getActors();
+                .findFirst();
+        if(!oProject.isPresent()){
+            return new HashSet<>();
+        }
+        return oProject.get().getActors();
+    }
+
+    public  List<Actor> findActorsSortByMicNumber(Long projectId) {
+        return showAllActors(projectId).stream()
+                .sorted(Comparator.comparing(actor-> actor.getMicNumber()))
+                .collect(Collectors.toList());
     }
 
     public void addNewActor(Long projectId, Actor actor) {
