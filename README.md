@@ -4,7 +4,7 @@
 - Start Date:  Tuesday, May 1st
 - End Date:   Tuesday, May 15th
 
-## Contributors:  
+### Contributors:  
 - **[Hadi Efatian](https://github.com/hadiefatian)**
 - **[Alireza Asghari](https://github.com/alirezaasghari)**
 
