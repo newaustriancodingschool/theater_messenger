@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 @Controller
 @RequestMapping("/editproject")
 public class EditProjectController {
@@ -21,6 +19,7 @@ public class EditProjectController {
         this.projectController = projectController;
     }
 
+    // Display the edit project page
     @GetMapping(params = {"projectId"})
     String page(@RequestParam("projectId") Long id, Model model) {
         model.addAttribute("project", projectController.findProject(id).get());
@@ -28,17 +27,20 @@ public class EditProjectController {
         return "editproject";
     }
 
+    // Create new actor object
     @ModelAttribute("newActor")
     Actor newActor() {
         return new Actor();
     }
 
+    // Add a new Actor in Project repository
     @PostMapping("/{projectId}")
     String newActor(@PathVariable Long projectId, Actor actor) {
         projectController.addNewActor(projectId, actor);
         return "redirect:/editproject/?projectId=" + projectId;
     }
 
+    // Delete Actor from Project repository
     @GetMapping(value = "actor", params = {"projectId", "actorId"})
     String deleteActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, Model model) {
         Optional<Project> project = projectController.findProject(projectId);
@@ -48,6 +50,7 @@ public class EditProjectController {
         return "redirect:/editproject/?projectId=" + projectId;
     }
 
+    // Delete Project from Project repository
     @GetMapping(value = "project", params = {"projectId"})
     String deleteProject(@RequestParam("projectId") Long projectId, Model model) {
         Optional<Project> project = projectController.findProject(projectId);

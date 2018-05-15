@@ -14,7 +14,6 @@
 
 </head>
 
-
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -40,89 +39,36 @@
 <div class="jumbotron text-center">
     <h1>Message:</h1>
     <p><br/></p>
-</div>
-<div>
-    <!--<input type="hidden" name="problemId" th:value="${problem.id}"/>-->
-    <!--<form class="form-inline" th:action="@{/assistant}" method="post">-->
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role Name</th>
+                <th>Mic Number</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="problem: ${messages}" class="text-left">
+                <td th:text="${problem.name}">Action</td>
+                <td th:text="${problem.actor.firstName}">First Name</td>
+                <td th:text="${problem.actor.lastName}">Last Name</td>
+                <td th:text="${problem.actor.roleName}">Role Name</td>
+                <td th:text="${problem.actor.micNumber}">Mic Number</td>
+                <td>
+                    <a th:href="@{/assistant/{id}(id=${problem.id})}"
+                       class="btn btn-default">
+                        Problem fixed
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-
-    <!--<div th:each="message: ${messages}" class="col">-->
-    <!--<div class="row center-align">-->
-    <!--<div th:if="${message}" th:text="${message}" class="col s3 m4 task-done green-text"></div>-->
-    <!--<div th:unless="${message}" th:text="${message}" class="col s3 m4 task"></div>-->
-    <!--<div class="table-responsive">-->
-    <!--<table class="table">-->
-    <!--<thead>-->
-    <!--<tr>-->
-    <!--<th>Problem</th>-->
-    <!--<th>Actor</th>-->
-    <!--<th></th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-    <!--<tr th:each="message: ${messages}" class="text-left">-->
-    <!--<tr>-->
-    <!--<span th:text="${message.name}"></span>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--<span th:text="${message.actor.firstName}"></span>-->
-    <!--<span th:text="${message.actor.lastName}"></span>-->
-    <!--<span th:text="${message.actor.roleName}"></span>-->
-    <!--<span>MicNr: </span>-->
-    <!--<span th:text="${message.actor.micNumber}"></span>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--<button name="action" value="delete" type="submit"-->
-    <!--class="btn btn-default">Problem fixed-->
-    <!--</button>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-    <!--</table>-->
-    <!--</div>-->
-    <!--</form>-->
-
-    <!--<form th:action="@{assistant/delete/{id}(id=${message.id})}" method="post">-->
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Role Name</th>
-                    <th>Mic Number</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="message: ${messages}" class="text-left">
-                    <td th:text="${message.name}">Action</td>
-                    <td th:text="${message.actor.firstName}">First Name</td>
-                    <td th:text="${message.actor.lastName}">Last Name</td>
-                    <td th:text="${message.actor.roleName}">Role Name</td>
-                    <td th:text="${message.actor.micNumber}">Mic Number</td>
-                    <td>
-                        <a th:href="@{/assistant/{id}(id=${message.id})}"
-                           class="btn btn-default">
-                            Problem fixed
-                        </a>
-
-                        <!--<button name="action" value="delete" type="submit"-->
-                                <!--class="btn btn-default">Problem fixed-->
-                        <!--</button>-->
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </form>
-</div>
-</div>
-
-
-<!--<a th:href="@{/assistant/problem(problemId=${problem.id})}" class="btn btn-default">-->
-<!--Problem fixed-->
-<!--</a>-->
-<!--</form>-->
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

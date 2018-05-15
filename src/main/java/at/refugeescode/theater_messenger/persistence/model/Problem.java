@@ -1,7 +1,10 @@
 package at.refugeescode.theater_messenger.persistence.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Problem {
