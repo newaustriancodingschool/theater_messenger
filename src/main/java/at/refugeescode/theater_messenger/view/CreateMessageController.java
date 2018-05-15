@@ -1,7 +1,7 @@
 package at.refugeescode.theater_messenger.view;
 
 import at.refugeescode.theater_messenger.controller.ProjectController;
-import at.refugeescode.theater_messenger.controller.SoundEngineer;
+import at.refugeescode.theater_messenger.controller.ProblemController;
 import at.refugeescode.theater_messenger.persistence.model.Actor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +15,11 @@ import java.util.List;
 public class CreateMessageController {
 
     private ProjectController projectController;
-    private SoundEngineer soundEngineer;
+    private ProblemController problemController;
 
-    public CreateMessageController(ProjectController projectController, SoundEngineer soundEngineer) {
+    public CreateMessageController(ProjectController projectController, ProblemController problemController) {
         this.projectController = projectController;
-        this.soundEngineer = soundEngineer;
+        this.problemController = problemController;
     }
 
     // Display the create message page
@@ -36,7 +36,7 @@ public class CreateMessageController {
     // Display the problems button
     @ModelAttribute("problems")
     List<String> showProblems() {
-        return soundEngineer.showProblems();
+        return problemController.showProblems();
     }
 
     // Create and save the message in Problem repository
@@ -47,7 +47,7 @@ public class CreateMessageController {
         Actor actor = projectController.findActorBy(projectId, actorId);
 
         // Save problem in info DB
-        soundEngineer.saveProblem(problem, actor);
+        problemController.saveProblem(problem, actor);
 
         // Flash the success Message when the message has been created
         redirectAttributes.addFlashAttribute("success", true);

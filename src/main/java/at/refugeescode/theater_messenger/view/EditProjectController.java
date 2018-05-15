@@ -39,7 +39,7 @@ public class EditProjectController {
         return "redirect:/editproject/?projectId=" + projectId;
     }
 
-    @RequestMapping(value = "actor", params = {"projectId", "actorId"}, method = GET)
+    @GetMapping(value = "actor", params = {"projectId", "actorId"})
     String deleteActor(@RequestParam("projectId") Long projectId, @RequestParam("actorId") Long actorId, Model model) {
         Optional<Project> project = projectController.findProject(projectId);
         model.addAttribute("project", project.get());
@@ -48,7 +48,7 @@ public class EditProjectController {
         return "redirect:/editproject/?projectId=" + projectId;
     }
 
-    @RequestMapping(value = "project", params = {"projectId"}, method = GET)
+    @GetMapping(value = "project", params = {"projectId"})
     String deleteProject(@RequestParam("projectId") Long projectId, Model model) {
         Optional<Project> project = projectController.findProject(projectId);
         model.addAttribute("project", project.get());
