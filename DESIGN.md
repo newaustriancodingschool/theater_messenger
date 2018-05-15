@@ -1,13 +1,11 @@
-#####Design Document:
+#Project:  Theater Messenger 
 
-##Project:  Theater Messenger 
-
-####Contributors:  Hadi Efatian - Alireza Asghari
+**Contributors:  Hadi Efatian - Alireza Asghari
 
 - Start Date:  Tuesday May 1st.
 - End Date:   Tuesday May 15th.
 
-###Design and Technologies:
+**Design and Technologies:
 
 The application is designed mostly in dark-red and gold colors which are common colors seen in a classic theater hall. 
 
@@ -25,6 +23,6 @@ Bootstrap for front-end templates and libraries
 HTML5, CSS, JavaScript for front-end design
 
 
-###The second milestone of the project:
+**The second milestone of the project:
 
 The next step of this project development is to separate the two pages of sound engineer and sound assistant so that they can access the application on two devices. The engineer has access to everything from his/her computer but the assistant has access only to the sound assistant page on his/her tablet.
