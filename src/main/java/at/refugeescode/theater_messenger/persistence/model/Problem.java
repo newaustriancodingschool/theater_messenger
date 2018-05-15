@@ -11,7 +11,7 @@ public class Problem {
     private Long id;
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Actor actor;
 
     public Problem() {

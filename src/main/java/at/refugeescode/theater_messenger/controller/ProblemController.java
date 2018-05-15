@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SoundEngineer {
+public class ProblemController {
 
     private ProblemFactory problemFactory;
     private ProblemRepository problemRepository;
 
-    public SoundEngineer(ProblemFactory problemFactory, ProblemRepository problemRepository) {
+    public ProblemController(ProblemFactory problemFactory, ProblemRepository problemRepository) {
         this.problemFactory = problemFactory;
         this.problemRepository = problemRepository;
     }
@@ -30,4 +30,11 @@ public class SoundEngineer {
         problemRepository.save(problem);
     }
 
+    public List<Problem> showMessage() {
+        return problemRepository.findAll();
+    }
+
+    public void deleteProblem(Long problemId){
+        problemRepository.deleteById(problemId);
+    }
 }
