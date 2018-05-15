@@ -40,7 +40,7 @@
 
     <div th:if="${success}" class="alert alert-success fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success!</strong> Your message has been sent.
+        <strong>Success!</strong> Your problem has been sent.
     </div>
     <p><br/></p>
     <form class="form-inline" th:action="@{/createmessage}" method="post">
@@ -64,20 +64,17 @@
             <div th:each="actor: ${actors}" class="form-group">
 
                 <button type="submit" name="actorId" th:value="${actor.id}" class="btn actorButton btn-default">
-
                     <span th:text="${actor.firstName}"></span>
                     <span th:text="${actor.lastName}"></span><br>
                     <span th:text="${actor.roleName}"></span><br>
                     <span>MicNr: </span>
                     <span th:text="${actor.micNumber}"></span>
-
                 </button>
             </div>
         </div>
     </form>
     <p><br/></p>
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

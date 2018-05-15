@@ -20,25 +20,26 @@ public class EngineerController {
         this.projectController = projectController;
     }
 
-    // engineer is the name of HTML file
+    // Display the engineer page
     @GetMapping
     String page() {
         return "engineer";
     }
 
-    // Form object
+    // Create new project object
     @ModelAttribute("newProject")
     Project newProject() {
         return new Project();
     }
 
-    // Form action
+    // Add new project
     @PostMapping
     String newProject(Project project) {
         projectController.addNewProject(project);
         return "redirect:/engineer";
     }
 
+    // Show existing projects
     @ModelAttribute("projects")
     List<Project> showProjects() {
         return projectController.showAllProjects();

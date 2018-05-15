@@ -30,6 +30,7 @@ public class ProjectController {
         return projectRepository.findById(id);
     }
 
+    // Load all actors from project repository
     public Set<Actor> showAllActors(Long id) {
         Optional<Project> oProject = projectRepository.findAll().stream()
                 .filter(project -> project.getId().equals(id))
@@ -40,12 +41,14 @@ public class ProjectController {
         return oProject.get().getActors();
     }
 
+    // Sort actors by the Mic number
     public List<Actor> findActorsSortByMicNumber(Long projectId) {
         return showAllActors(projectId).stream()
                 .sorted(Comparator.comparing(actor -> actor.getMicNumber()))
                 .collect(Collectors.toList());
     }
 
+    // Add new Actor to the project repository
     public void addNewActor(Long projectId, Actor actor) {
         Project actualProject = projectRepository.findById(projectId).get();
         Set<Actor> actors = actualProject.getActors();
@@ -54,6 +57,7 @@ public class ProjectController {
         projectRepository.save(actualProject);
     }
 
+    // Delete Actor from the project repository
     public void deleteActor(Long projectId, Long actorId) {
         Project project = projectRepository.findById(projectId).get();
         project.setActors(project.getActors().stream()
@@ -63,10 +67,12 @@ public class ProjectController {
         projectRepository.save(project);
     }
 
+    // Delete Project from the project repository
     public void deleteProject(Long projectId) {
         projectRepository.deleteById(projectId);
     }
 
+    // Load an Actor from project repository by Id
     public Actor findActorBy(Long projectId, Long actorId) {
         Project project = projectRepository.findById(projectId).get();
         return project.getActors().stream()

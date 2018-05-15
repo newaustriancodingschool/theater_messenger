@@ -1,7 +1,7 @@
 package at.refugeescode.theater_messenger.view;
 
-import at.refugeescode.theater_messenger.controller.ProjectController;
 import at.refugeescode.theater_messenger.controller.ProblemController;
+import at.refugeescode.theater_messenger.controller.ProjectController;
 import at.refugeescode.theater_messenger.persistence.model.Actor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,8 +46,8 @@ public class CreateMessageController {
         // Find the Actor
         Actor actor = projectController.findActorBy(projectId, actorId);
 
-        // Save problem in info DB
-        problemController.saveProblem(problem, actor);
+        // Save message in info DB
+        problemController.saveMessage(problem, actor);
 
         // Flash the success Message when the message has been created
         redirectAttributes.addFlashAttribute("success", true);

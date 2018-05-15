@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 @Service
 public class ProblemFactory {
 
+    // Create the list of problem
     public List<String> createProblem() {
         return Stream.of("CHANGE BATTERIES", "CHECK CABLE", "CHECK ANTENNA", "CHECK FREQUENCY",
                 "CLEAN MIC", "CHANGE MIC", "CHANGE TAPE", "UNKNOWN PROBLEM")

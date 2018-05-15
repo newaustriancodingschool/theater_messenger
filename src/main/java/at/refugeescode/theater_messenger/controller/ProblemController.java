@@ -18,23 +18,27 @@ public class ProblemController {
         this.problemRepository = problemRepository;
     }
 
+    // Read the list of problems from problem factory
     public List<String> showProblems() {
         List<String> problems = problemFactory.createProblem();
         return problems;
     }
 
-    public void saveProblem(String problemName, Actor actor) {
+    // Save the message in problem repository
+    public void saveMessage(String problemName, Actor actor) {
         Problem problem = new Problem();
         problem.setName(problemName);
         problem.setActor(actor);
         problemRepository.save(problem);
     }
 
+    // Load message from problem repository
     public List<Problem> showMessage() {
         return problemRepository.findAll();
     }
 
-    public void deleteProblem(Long problemId){
+    // Delete message from problem repository
+    public void deleteMessage(Long problemId){
         problemRepository.deleteById(problemId);
     }
 }
